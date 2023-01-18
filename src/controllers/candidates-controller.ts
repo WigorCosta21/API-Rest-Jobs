@@ -45,29 +45,29 @@ const candidatesController = {
     }
   },
   update: async (req: Request, res: Response) => {
-    const { id } = req.params
-    const { name, bio, email, phone, openToWork } = req.body
+    const { id } = req.params;
+    const { name, bio, email, phone, openToWork } = req.body;
 
     try {
-        const candidate = await Candidate.findByPk(id)
+      const candidate = await Candidate.findByPk(id);
 
-        if (candidate === null) {
-            return res.status(404).json({ message: 'Candidato não encontrado' })
-        }
+      if (candidate === null) {
+        return res.status(404).json({ message: "Candidato não encontrado" });
+      }
 
-        candidate.name = name
-        candidate.bio = bio
-        candidate.email = email
-        candidate.phone = phone
-        candidate.openToWork = openToWork
+      candidate.name = name;
+      candidate.bio = bio;
+      candidate.email = email;
+      candidate.phone = phone;
+      candidate.openToWork = openToWork;
 
-        await candidate.save()
+      await candidate.save();
 
-        return res.status(200).json(candidate)
+      return res.status(200).json(candidate);
     } catch (err) {
-        if (err instanceof Error) {
-            return res.status(400).json({ message: err.message })
-        }
+      if (err instanceof Error) {
+        return res.status(400).json({ message: err.message });
+      }
     }
   },
 
