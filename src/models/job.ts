@@ -8,24 +8,29 @@ interface JobInstance extends Model {
     limitDate: Date
     companyId: number
 }
- 
+
 export const Job = sequelize.define<JobInstance>(
-    'jobs', {
+    'jobs',
+    {
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             autoIncrement: true,
             primaryKey: true
-        }, 
+        },
         title: {
             type: DataTypes.STRING,
+            allowNull: false
+        },
+        description: {
+            type: DataTypes.TEXT,
             allowNull: false
         },
         limitDate: {
             type: DataTypes.DATE,
             allowNull: false
         },
-        company_id: {
+        companyId: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
@@ -37,3 +42,4 @@ export const Job = sequelize.define<JobInstance>(
         }
     }
 )
+
