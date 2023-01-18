@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { Company } from "../models/company";
+import { Company } from "../models";
 import { Candidate } from "./../models/candidate";
 
 export const companiesController = {
@@ -35,7 +35,7 @@ export const companiesController = {
     const { id } = req.params;
 
     try {
-      const companie = await Company.findByPk(id);
+      const companie = await Company.findByPk(id, { include: 'jobs' });
       return res.json(companie);
     } catch (err) {
       if (err instanceof Error) {
