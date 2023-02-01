@@ -55,7 +55,7 @@ Esse endpoint é responsável por criar novos candidatos no banco de dados.
 Nenhum
 #### Respostas
 ###### Status 200!
-Retorna um json com todos os candidatos cadastrados.
+Caso o cadastro dê sucesso!
 ```
 {
     "id": 6,
