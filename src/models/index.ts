@@ -1,13 +1,10 @@
-import { Candidate } from './candidate'
-import { Company } from './company'
-import { Job } from './job'
+import { Candidate } from "./candidate";
+import { Company } from "./company";
+import { Job } from "./job";
 
-Company.hasMany(Job)
+Company.hasMany(Job);
+Job.belongsTo(Company);
+Job.belongsToMany(Candidate, { through: "job_candidates" });
+Candidate.belongsToMany(Job, { through: "job_candidates" });
 
-Job.belongsTo(Company)
-
-export {
-    Candidate,
-    Company,
-    Job
-}
+export { Candidate, Company, Job };

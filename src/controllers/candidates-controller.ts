@@ -36,7 +36,7 @@ const candidatesController = {
     const { id } = req.params;
 
     try {
-      const candidate = await Candidate.findByPk(id);
+      const candidate = await Candidate.findByPk(id, { include: "jobs" });
       res.json({ candidate });
     } catch (err) {
       if (err instanceof Error) {

@@ -10,7 +10,7 @@ interface CandidateInstance extends Model {
     openToWork: boolean
 }
 
-export const Candidate = sequelize.define<CandidateInstance>(
+const Candidate = sequelize.define<CandidateInstance>(
     'candidates',
     {
         id: {
@@ -37,3 +37,4 @@ export const Candidate = sequelize.define<CandidateInstance>(
     }
 )
 
+export { Candidate ,CandidateInstance };
