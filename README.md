@@ -47,12 +47,16 @@ Exemplo de resposta:
 ]
 ```
 ###### Erro 404
-Caso aconteça este erro, significa que aconteceu algum erro para listar os candidatos. 
+Caso aconteça algum erro ao listar os candidatos. 
 
 ### POST /candidates
 Esse endpoint é responsável por criar novos candidatos no banco de dados.
 #### Parâmetros 
-Nenhum
+Name - Nome do candidato
+Bio - Sobre o candidato,
+Email - Email do candidato,
+Phone - Telefone do candidato,
+OpenToWork - Se o candidato está aberto para vagas.
 #### Respostas
 ###### Status 200!
 Caso o cadastro dê sucesso!
@@ -77,3 +81,78 @@ Caso aconteça este erro, significa que aconteceu algum erro para cadastrar o ca
     "message": "notNull Violation: candidates.name cannot be null"
 }
 ```
+### GET /candidates/:id
+Esse endpoint é responsável por listar um candidato pelo ID.
+#### Parâmetros 
+ID do candidato cadastrado no sistema.
+#### Respostas
+###### Status 200!
+Retorna o candidato do iD.
+
+```
+{
+    "candidate": {
+        "id": 2,
+        "name": "Beatrice",
+        "email": "beatrice@email.com",
+        "bio": "Front-end developer | React | Next.js | Typescript",
+        "phone": "2222-2222",
+        "openToWork": false,
+        "createdAt": "2023-01-17T01:36:44.789Z",
+        "updatedAt": "2023-01-17T01:36:44.789Z",
+        "jobs": []
+    }
+}
+```
+
+
+###### Erro 400
+Caso passe um parâmetro um ID inexistente. 
+
+```
+{
+    "candidate": null
+}
+```
+### PUT /candidates/:id
+Esse endpoint atualiza informações do candidato no banco de dados.
+#### Parâmetros 
+Name - Nome do candidato
+Bio - Sobre o candidato,
+Email - Email do candidato,
+Phone - Telefone do candidato,
+OpenToWork - Se o candidato está aberto para vagas.
+#### Respostas
+###### Status 200!
+
+```
+{
+    "id": 6,
+    "name": "John Doe",
+    "email": "john@email.com",
+    "createdAt": "2023-02-01T01:04:38.960Z",
+    "updatedAt": "2023-02-02T02:02:30.093Z"
+}
+```
+
+###### Erro 400
+Caso passe um parâmetro um ID inexistente. 
+
+```
+{
+    "message": "Candidato não encontrado"
+}
+```
+
+### DELETE /candidates/:id
+Esse endpoint deleta o candidato do banco de dados.
+#### Parâmetros 
+ID do candidato cadastrado no sistema.
+#### Respostas
+###### Status 204!
+Caso dê sucesso ao deletar o candidato no sistema.
+
+###### Erro 400
+Caso passe um parâmetro um ID inexistente. 
+
+## Vagas
